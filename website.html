@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Conversion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        input, select, button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 5px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Temperature Conversion</h1>
+        <select id="unit">
+            <option value="F">Fahrenheit to Celsius</option>
+            <option value="C">Celsius to Fahrenheit</option>
+        </select>
+        <input type="number" id="temperature" placeholder="Enter temperature">
+        <button onclick="convert()">Convert</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function convert() {
+            const unit = document.getElementById('unit').value;
+            const temp = parseFloat(document.getElementById('temperature').value);
+            let result;
+
+            if (unit === 'F') {
+                result = (temp - 32) / 1.8;
+                document.getElementById('result').innerHTML = `${temp}°F = ${result.toFixed(2)}°C`;
+            } else {
+                result = (1.8 * temp) + 32;
+                document.getElementById('result').innerHTML = `${temp}°C = ${result.toFixed(2)}°F`;
+            }
+        }
+    </script>
+</body>
+</html>
